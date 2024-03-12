@@ -189,7 +189,7 @@ def get_sector_growth():
 
 
         openai = OpenAI(
-            api_key="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"
+            api_key="Apikey"
         )
         growth_data = {}
         for sector in sectors:
