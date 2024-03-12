@@ -53,7 +53,7 @@ def chatgpt():
             text = "Generate the latest news articles related to semiconductors"
         # text = "Generate the latest news articles related to semicondutor"
         openai = OpenAI(
-            api_key="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"
+            api_key="Apikey"
         )
         completion = openai.chat.completions.create(
             model="gpt-4",
@@ -114,7 +114,7 @@ def market():
 
 
         openai = OpenAI(
-            api_key="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"
+            api_key="Apikey"
         )
         growth_data = {}
         for sector in sectors:
