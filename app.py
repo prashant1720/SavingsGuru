@@ -37,7 +37,7 @@ def openai():
     key_products = [(company['name'], company['key_product']) for company in companies_data]
     return render_template('OpenAi.html', key_products=key_products)
 
-openai.api_key = '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'
+openai.api_key = 'mykey'
 
 @app.route('/chatgpt', methods=['POST','GET'])
 def chatgpt():
