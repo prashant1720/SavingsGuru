@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Products</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-grey-100  h-screen">
+    
+    <div class="w-full max-w-screen-lg mx-auto p-8 ">
+        <h1 class="text-3xl mb-8 text-center">Key Products of Companies</h1>
+        <table class="w-full border-collapse border border-gray-300">
+            <thead>
+                <tr>
+                    <th class="p-4 border border-gray-700 ">Company Name</th>
+                    <th class="p-4 border border-gray-700">Key Product</th>
+                    <th class="p-4 border border-gray-700"></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for company, product in key_products %}
+                <tr>
+                    <td class="p-4 border border-gray-700 ">{{ company }}</td>
+                    <td class="p-4 border border-gray-700 ">{{ product }}</td>
+                    <td class="p-4 border border-gray-700 ">
+                        <button class="bg-blue-500 text-white py-2 px-4 rounded Aibutton" data-company="{{ company }}" data-product="{{ product }}">See Latest News</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h1>OpenAI Results</h1>
+    
+        
+        <div style="background-color: rgb(248, 248, 250); margin-top: 10px;">
+            <ul>
+                {{score}}
+            </ul>
+        </div>
+       
+      
+        <ul>
+            {% for point in output %}
+            <div style="background-color: rgb(143, 143, 213); margin-top: 10px;">
+                <li>{{ point }}</li>
+            </div>
+               
+                
+            {% endfor %}
+        </ul>
+
+    </div>
+
+    <!-- <script>
+        document.getElementById('Aibutton').addEventListener('click', function() {
+                    window.location.href = '/chatgpt';  // Redirect to the '/openai' page
+                });
+    </script> -->
+ <script>
+    // Get all buttons with class 'Aibutton'
+    var buttons = document.querySelectorAll('.Aibutton');
+
+    // Iterate over each button
+    buttons.forEach(function(button) {
+        // Add event listener to each button
+        button.addEventListener('click', function() {
+            // Get the company name and product of the respective row
+            var company = this.dataset.company;
+            var product = this.dataset.product;
+
+            // Construct the URL with query parameters
+            var url = '/chatgpt?company=' + encodeURIComponent(company) + '&product=' + encodeURIComponent(product);
+
+            // Redirect to the constructed URL
+            window.location.href = url;
+        });
+    });
+</script>
+</body>
+</html>

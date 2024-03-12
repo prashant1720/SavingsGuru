@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Analysis</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        #plot {
+            width: 80%;
+            height: 80%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div  >
+
+        <h1  style="margin-left: 45%; margin-top: 15%;">Portfolio Analysis</h1>
+
+        <div id="plot"></div>
+    
+        <script>
+            // Portfolio data in HTML
+            var portfolioData = [
+                {"name": "Qualcomm Inc", "quantity": 30, "current_price": 1000},
+                {"name": "Tyson Foods", "quantity": 45, "current_price": 2600},
+                {"name": "AstraZeneca PLC", "quantity": 35, "current_price": 2600},
+                {"name": "Google", "quantity": 15, "current_price": 2600}
+            ];
+    
+            // Extract data for plotting
+            var labels = portfolioData.map(asset => asset.name);
+            var values = portfolioData.map(asset => asset.quantity * asset.current_price);
+    
+            // Create bar graph
+            var data = [{
+                x: labels,
+                y: values,
+                type: 'bar'
+            }];
+    
+            var layout = {
+                title: 'Portfolio Distribution'
+            };
+    
+            Plotly.newPlot('plot', data, layout);
+        </script>
+    </div>
+ 
+</body>
+</html>
